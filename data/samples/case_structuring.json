@@ -1,0 +1,261 @@
+{
+    "case_id": "CASE-2024-STR-001",
+    "alert_date": "2024-09-15",
+    "priority": "high",
+    "subject": {
+        "name": "James K. Morrison",
+        "dob": "1978-04-12",
+        "ssn": "456-78-9012",
+        "address": "1234 Maple Street, Suite 200, Chicago, IL 60601",
+        "phone": "+1-312-555-0199",
+        "email": "j.morrison@morrisongroup.com",
+        "occupation": "Real Estate Developer",
+        "risk_rating": "high",
+        "customer_since": "2019-03-01"
+    },
+    "accounts": [
+        {
+            "account_id": "ACC-001-CHK",
+            "account_type": "checking",
+            "balance": 87542.30,
+            "currency": "USD",
+            "branch": "Downtown Chicago"
+        },
+        {
+            "account_id": "ACC-002-SAV",
+            "account_type": "savings",
+            "balance": 215000.00,
+            "currency": "USD",
+            "branch": "Downtown Chicago"
+        },
+        {
+            "account_id": "ACC-003-BIZ",
+            "account_type": "business_checking",
+            "balance": 342670.45,
+            "currency": "USD",
+            "branch": "Downtown Chicago"
+        }
+    ],
+    "transactions": [
+        {
+            "txn_id": "TXN-20240901-001",
+            "date": "2024-09-01",
+            "type": "deposit",
+            "amount": 9800,
+            "currency": "USD",
+            "from_account": null,
+            "to_account": "ACC-001-CHK",
+            "from_entity": "Cash Deposit",
+            "to_entity": "James K. Morrison",
+            "from_country": "US",
+            "to_country": "US",
+            "location": "Chicago, IL",
+            "description": "Cash deposit",
+            "risk_flags": ["structured_amount"]
+        },
+        {
+            "txn_id": "TXN-20240901-002",
+            "date": "2024-09-01",
+            "type": "deposit",
+            "amount": 9500,
+            "currency": "USD",
+            "from_account": null,
+            "to_account": "ACC-002-SAV",
+            "from_entity": "Cash Deposit",
+            "to_entity": "James K. Morrison",
+            "from_country": "US",
+            "to_country": "US",
+            "location": "Chicago, IL",
+            "description": "Cash deposit",
+            "risk_flags": ["structured_amount"]
+        },
+        {
+            "txn_id": "TXN-20240902-001",
+            "date": "2024-09-02",
+            "type": "deposit",
+            "amount": 9700,
+            "currency": "USD",
+            "from_account": null,
+            "to_account": "ACC-001-CHK",
+            "from_entity": "Cash Deposit",
+            "to_entity": "James K. Morrison",
+            "from_country": "US",
+            "to_country": "US",
+            "location": "Oak Park, IL",
+            "description": "Cash",
+            "risk_flags": ["structured_amount"]
+        },
+        {
+            "txn_id": "TXN-20240903-001",
+            "date": "2024-09-03",
+            "type": "wire_out",
+            "amount": 28500,
+            "currency": "USD",
+            "from_account": "ACC-001-CHK",
+            "to_account": "EXT-BZ-7788",
+            "from_entity": "James K. Morrison",
+            "to_entity": "Pacific Holdings Ltd",
+            "from_country": "US",
+            "to_country": "BZ",
+            "location": "Chicago, IL",
+            "description": "Consulting fee",
+            "risk_flags": ["layering_pattern"]
+        },
+        {
+            "txn_id": "TXN-20240905-001",
+            "date": "2024-09-05",
+            "type": "deposit",
+            "amount": 9900,
+            "currency": "USD",
+            "from_account": null,
+            "to_account": "ACC-003-BIZ",
+            "from_entity": "Cash Deposit",
+            "to_entity": "Morrison Development LLC",
+            "from_country": "US",
+            "to_country": "US",
+            "location": "Evanston, IL",
+            "description": "Business cash deposit",
+            "risk_flags": ["structured_amount"]
+        },
+        {
+            "txn_id": "TXN-20240905-002",
+            "date": "2024-09-05",
+            "type": "internal_transfer",
+            "amount": 45000,
+            "currency": "USD",
+            "from_account": "ACC-002-SAV",
+            "to_account": "ACC-003-BIZ",
+            "from_entity": "James K. Morrison",
+            "to_entity": "Morrison Development LLC",
+            "from_country": "US",
+            "to_country": "US",
+            "location": null,
+            "description": "Fund transfer",
+            "risk_flags": ["rapid_movement"]
+        },
+        {
+            "txn_id": "TXN-20240907-001",
+            "date": "2024-09-07",
+            "type": "wire_out",
+            "amount": 52000,
+            "currency": "USD",
+            "from_account": "ACC-003-BIZ",
+            "to_account": "EXT-PA-4422",
+            "from_entity": "Morrison Development LLC",
+            "to_entity": "Coral Bay Investments SA",
+            "from_country": "US",
+            "to_country": "PA",
+            "location": "Chicago, IL",
+            "description": "Property acquisition deposit",
+            "risk_flags": ["layering_pattern", "shell_company_indicator"]
+        },
+        {
+            "txn_id": "TXN-20240910-001",
+            "date": "2024-09-10",
+            "type": "deposit",
+            "amount": 9600,
+            "currency": "USD",
+            "from_account": null,
+            "to_account": "ACC-001-CHK",
+            "from_entity": "Cash Deposit",
+            "to_entity": "James K. Morrison",
+            "from_country": "US",
+            "to_country": "US",
+            "location": "Naperville, IL",
+            "description": "Cash",
+            "risk_flags": ["structured_amount"]
+        },
+        {
+            "txn_id": "TXN-20240912-001",
+            "date": "2024-09-12",
+            "type": "wire_out",
+            "amount": 18000,
+            "currency": "USD",
+            "from_account": "ACC-001-CHK",
+            "to_account": "EXT-BZ-7788",
+            "from_entity": "James K. Morrison",
+            "to_entity": "Pacific Holdings Ltd",
+            "from_country": "US",
+            "to_country": "BZ",
+            "location": "Chicago, IL",
+            "description": "Advisory services",
+            "risk_flags": []
+        }
+    ],
+    "kyc": {
+        "verification_status": "verified",
+        "source_of_funds": "real_estate_income",
+        "expected_activity": "monthly_business_transfers_10k_50k",
+        "actual_activity_profile": "frequent_cash_deposits_with_international_wires",
+        "pep_status": false,
+        "adverse_media_hits": [
+            {
+                "source": "local_news_tribune",
+                "date": "2023-11-15",
+                "summary": "Morrison Development LLC under investigation for undisclosed offshore property holdings"
+            }
+        ]
+    },
+    "communications": [
+        {
+            "date": "2024-09-04",
+            "channel": "secure_message",
+            "content": "Need to split the remaining into smaller deposits. Keep it under the radar. Will come to different branches this week.",
+            "flagged": true,
+            "flag_reason": "structuring_language"
+        },
+        {
+            "date": "2024-09-06",
+            "channel": "email",
+            "content": "Send the wire to Panama ASAP. Don't include any details in the memo field. Just use 'consulting' as the description.",
+            "flagged": true,
+            "flag_reason": "concealment_instructions"
+        }
+    ],
+    "alerts": [
+        {
+            "alert_id": "ALT-2024-0912",
+            "type": "structuring",
+            "severity": "high",
+            "description": "Multiple cash deposits just below $10,000 CTR threshold within 10-day period",
+            "triggered_date": "2024-09-10"
+        },
+        {
+            "alert_id": "ALT-2024-0913",
+            "type": "high_risk_jurisdiction",
+            "severity": "high",
+            "description": "Wire transfers to Belize and Panama — known tax haven jurisdictions",
+            "triggered_date": "2024-09-12"
+        },
+        {
+            "alert_id": "ALT-2024-0914",
+            "type": "velocity",
+            "severity": "medium",
+            "description": "Unusual increase in transaction frequency compared to historical baseline",
+            "triggered_date": "2024-09-12"
+        }
+    ],
+    "related_entities": [
+        {
+            "entity_name": "Pacific Holdings Ltd",
+            "entity_type": "corporation",
+            "jurisdiction": "BZ",
+            "relationship": "wire_beneficiary",
+            "risk_notes": "Registered in Belize with minimal public filings. No verifiable business operations found."
+        },
+        {
+            "entity_name": "Coral Bay Investments SA",
+            "entity_type": "corporation",
+            "jurisdiction": "PA",
+            "relationship": "wire_beneficiary",
+            "risk_notes": "Panama-registered entity. Beneficial ownership structure is opaque. Linked to multiple real estate SPVs."
+        },
+        {
+            "entity_name": "Morrison Development LLC",
+            "entity_type": "llc",
+            "jurisdiction": "US",
+            "relationship": "owned_entity",
+            "risk_notes": null
+        }
+    ]
+}

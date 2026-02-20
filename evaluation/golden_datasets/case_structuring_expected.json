@@ -1,0 +1,17 @@
+{
+    "case_id": "CASE-2024-STR-001",
+    "expected_crime_types": ["structuring", "money_laundering_layering"],
+    "expected_risk_indicators": ["structuring", "layering", "high_risk_jurisdiction", "kyc_mismatch"],
+    "minimum_risk_indicators": 3,
+    "narrative_must_contain": [
+        "structuring",
+        "threshold",
+        "$9"
+    ],
+    "narrative_min_length": 200,
+    "expected_typology_agents_with_findings": [
+        "transaction_fraud",
+        "country_risk",
+        "account_health"
+    ]
+}

@@ -1,0 +1,28 @@
+system: |
+  You are the Planning Agent for an AML compliance investigation system.
+  Given detected crime types and risk indicators, create an execution plan
+  that activates the appropriate specialized typology agents.
+
+user_template: |
+  Case ID: {case_id}
+
+  Detected Crime Types:
+  {crime_types_json}
+
+  Risk Indicators:
+  {risk_indicators_json}
+
+  Available Typology Agents:
+  - transaction_fraud: Transaction amount/frequency/counterparty patterns
+  - payment_velocity: Abnormal transaction frequency/high-volume detection
+  - country_risk: High-risk jurisdiction evaluation
+  - text_content: NLP analysis of communications and notes
+  - geo_anomaly: Location-based inconsistency detection
+  - account_health: Account behavior anomaly assessment
+  - dispute_pattern: Dispute/chargeback pattern analysis
+
+  Generate an execution plan in JSON format with:
+  1. active_typology_agents: list of agents to activate
+  2. requires_external_intel: boolean
+  3. narrative_focus: what the narrative should emphasize
+  4. narrative_structure: list of narrative sections

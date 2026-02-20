@@ -1,0 +1,285 @@
+{
+    "case_id": "CASE-2024-SHL-003",
+    "alert_date": "2024-10-01",
+    "priority": "high",
+    "subject": {
+        "name": "Dmitri Volkov",
+        "dob": "1985-11-22",
+        "ssn": "789-01-2345",
+        "address": "4500 Park Avenue, Floor 22, New York, NY 10022",
+        "phone": "+1-212-555-0377",
+        "email": "d.volkov@vkglobal.com",
+        "occupation": "Import/Export Consultant",
+        "risk_rating": "high",
+        "customer_since": "2022-01-10"
+    },
+    "accounts": [
+        {
+            "account_id": "ACC-DV-001",
+            "account_type": "business_checking",
+            "balance": 567890.00,
+            "currency": "USD",
+            "branch": "Manhattan Midtown"
+        },
+        {
+            "account_id": "ACC-DV-002",
+            "account_type": "checking",
+            "balance": 45200.00,
+            "currency": "USD",
+            "branch": "Manhattan Midtown"
+        }
+    ],
+    "transactions": [
+        {
+            "txn_id": "TXN-20240915-S01",
+            "date": "2024-09-15",
+            "type": "wire_in",
+            "amount": 150000,
+            "currency": "USD",
+            "from_account": "EXT-KY-1100",
+            "to_account": "ACC-DV-001",
+            "from_entity": "Oceanic Trade Corp",
+            "to_entity": "VK Global Consulting LLC",
+            "from_country": "KY",
+            "to_country": "US",
+            "location": "New York, NY",
+            "description": "Trade settlement",
+            "risk_flags": []
+        },
+        {
+            "txn_id": "TXN-20240916-S02",
+            "date": "2024-09-16",
+            "type": "wire_out",
+            "amount": 75000,
+            "currency": "USD",
+            "from_account": "ACC-DV-001",
+            "to_account": "EXT-VG-2200",
+            "from_entity": "VK Global Consulting LLC",
+            "to_entity": "Meridian Assets BVI",
+            "from_country": "US",
+            "to_country": "VG",
+            "location": "New York, NY",
+            "description": "Supplier payment",
+            "risk_flags": ["rapid_movement", "layering_pattern"]
+        },
+        {
+            "txn_id": "TXN-20240916-S03",
+            "date": "2024-09-16",
+            "type": "wire_out",
+            "amount": 50000,
+            "currency": "USD",
+            "from_account": "ACC-DV-001",
+            "to_account": "EXT-PA-5500",
+            "from_entity": "VK Global Consulting LLC",
+            "to_entity": "Istmo Logistics SA",
+            "from_country": "US",
+            "to_country": "PA",
+            "location": "New York, NY",
+            "description": "Logistics fee",
+            "risk_flags": ["rapid_movement", "layering_pattern"]
+        },
+        {
+            "txn_id": "TXN-20240918-S04",
+            "date": "2024-09-18",
+            "type": "wire_in",
+            "amount": 200000,
+            "currency": "USD",
+            "from_account": "EXT-JE-3300",
+            "to_account": "ACC-DV-001",
+            "from_entity": "NorthStar Holdings Jersey",
+            "to_entity": "VK Global Consulting LLC",
+            "from_country": "JE",
+            "to_country": "US",
+            "location": "New York, NY",
+            "description": "Investment return",
+            "risk_flags": []
+        },
+        {
+            "txn_id": "TXN-20240919-S05",
+            "date": "2024-09-19",
+            "type": "wire_out",
+            "amount": 120000,
+            "currency": "USD",
+            "from_account": "ACC-DV-001",
+            "to_account": "EXT-KY-4400",
+            "from_entity": "VK Global Consulting LLC",
+            "to_entity": "Atlas Ventures KY",
+            "from_country": "US",
+            "to_country": "KY",
+            "location": "New York, NY",
+            "description": "Capital deployment",
+            "risk_flags": ["layering_pattern", "shell_company_indicator"]
+        },
+        {
+            "txn_id": "TXN-20240920-S06",
+            "date": "2024-09-20",
+            "type": "internal_transfer",
+            "amount": 25000,
+            "currency": "USD",
+            "from_account": "ACC-DV-001",
+            "to_account": "ACC-DV-002",
+            "from_entity": "VK Global Consulting LLC",
+            "to_entity": "Dmitri Volkov",
+            "from_country": "US",
+            "to_country": "US",
+            "location": null,
+            "description": "Management fee",
+            "risk_flags": []
+        },
+        {
+            "txn_id": "TXN-20240922-S07",
+            "date": "2024-09-22",
+            "type": "wire_out",
+            "amount": 80000,
+            "currency": "USD",
+            "from_account": "ACC-DV-001",
+            "to_account": "EXT-VG-6600",
+            "from_entity": "VK Global Consulting LLC",
+            "to_entity": "Sapphire Holdings BVI",
+            "from_country": "US",
+            "to_country": "VG",
+            "location": "New York, NY",
+            "description": "Professional services",
+            "risk_flags": ["shell_company_indicator", "no_verifiable_operations"]
+        },
+        {
+            "txn_id": "TXN-20240925-S08",
+            "date": "2024-09-25",
+            "type": "wire_in",
+            "amount": 180000,
+            "currency": "USD",
+            "from_account": "EXT-GG-7700",
+            "to_account": "ACC-DV-001",
+            "from_entity": "Crown Finance Guernsey",
+            "to_entity": "VK Global Consulting LLC",
+            "from_country": "GG",
+            "to_country": "US",
+            "location": "New York, NY",
+            "description": "Consulting revenue",
+            "risk_flags": []
+        }
+    ],
+    "kyc": {
+        "verification_status": "verified",
+        "source_of_funds": "import_export_business",
+        "expected_activity": "quarterly_trade_settlements_50k_100k",
+        "actual_activity_profile": "weekly_high_value_wires_multi_jurisdiction_offshore",
+        "pep_status": false,
+        "adverse_media_hits": [
+            {
+                "source": "financial_times",
+                "date": "2024-06-10",
+                "summary": "VK Global Consulting linked to network of shell companies under regulatory scrutiny in Jersey and BVI"
+            },
+            {
+                "source": "transparency_intl",
+                "date": "2024-03-22",
+                "summary": "Oceanic Trade Corp named in leaked documents showing phantom trade invoices"
+            }
+        ]
+    },
+    "communications": [
+        {
+            "date": "2024-09-17",
+            "channel": "email",
+            "content": "Move the funds quickly before end of quarter. Use the BVI and Panama entities as usual. Keep descriptions vague — just use 'services' or 'logistics'.",
+            "flagged": true,
+            "flag_reason": "concealment_instructions"
+        },
+        {
+            "date": "2024-09-21",
+            "channel": "secure_message",
+            "content": "Jersey transfer confirmed. Route the return through Guernsey this time for variety. The usual split: 60% to KY, 20% to BVI, 20% retained.",
+            "flagged": true,
+            "flag_reason": "layering_instructions"
+        }
+    ],
+    "alerts": [
+        {
+            "alert_id": "ALT-2024-SHL-001",
+            "type": "shell_company_network",
+            "severity": "critical",
+            "description": "Rapid fund flows between 6 offshore entities across KY, BVI, PA, JE, GG — classic layering topology",
+            "triggered_date": "2024-09-22"
+        },
+        {
+            "alert_id": "ALT-2024-SHL-002",
+            "type": "high_risk_jurisdiction",
+            "severity": "high",
+            "description": "Transactions spanning 5 high-risk/tax haven jurisdictions within 10 days",
+            "triggered_date": "2024-09-25"
+        },
+        {
+            "alert_id": "ALT-2024-SHL-003",
+            "type": "velocity",
+            "severity": "high",
+            "description": "8 high-value wire transfers totaling $880,000 within 10-day period",
+            "triggered_date": "2024-09-25"
+        },
+        {
+            "alert_id": "ALT-2024-SHL-004",
+            "type": "adverse_media",
+            "severity": "medium",
+            "description": "Subject's entities flagged in 2 adverse media reports (Financial Times, Transparency International)",
+            "triggered_date": "2024-09-25"
+        }
+    ],
+    "related_entities": [
+        {
+            "entity_name": "VK Global Consulting LLC",
+            "entity_type": "llc",
+            "jurisdiction": "US",
+            "relationship": "owned_entity",
+            "risk_notes": "Subject is sole owner. High-volume transactional activity inconsistent with stated consulting business."
+        },
+        {
+            "entity_name": "Oceanic Trade Corp",
+            "entity_type": "corporation",
+            "jurisdiction": "KY",
+            "relationship": "wire_originator",
+            "risk_notes": "Cayman Islands entity. Named in leaked documents showing phantom trade invoices."
+        },
+        {
+            "entity_name": "Meridian Assets BVI",
+            "entity_type": "corporation",
+            "jurisdiction": "VG",
+            "relationship": "wire_beneficiary",
+            "risk_notes": "BVI entity with no verifiable operations or public filings."
+        },
+        {
+            "entity_name": "Istmo Logistics SA",
+            "entity_type": "corporation",
+            "jurisdiction": "PA",
+            "relationship": "wire_beneficiary",
+            "risk_notes": "Panama entity. No customs or trade records found to support logistics business claim."
+        },
+        {
+            "entity_name": "NorthStar Holdings Jersey",
+            "entity_type": "corporation",
+            "jurisdiction": "JE",
+            "relationship": "wire_originator",
+            "risk_notes": "Jersey-registered holding company. Under regulatory review by JFSC."
+        },
+        {
+            "entity_name": "Atlas Ventures KY",
+            "entity_type": "corporation",
+            "jurisdiction": "KY",
+            "relationship": "wire_beneficiary",
+            "risk_notes": "Cayman Islands entity. Shares registered agent with Oceanic Trade Corp."
+        },
+        {
+            "entity_name": "Sapphire Holdings BVI",
+            "entity_type": "corporation",
+            "jurisdiction": "VG",
+            "relationship": "wire_beneficiary",
+            "risk_notes": "BVI entity flagged for no verifiable operations. Recently incorporated."
+        },
+        {
+            "entity_name": "Crown Finance Guernsey",
+            "entity_type": "corporation",
+            "jurisdiction": "GG",
+            "relationship": "wire_originator",
+            "risk_notes": "Guernsey-based entity. Beneficial ownership not publicly disclosed."
+        }
+    ]
+}
