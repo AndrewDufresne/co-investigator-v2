@@ -46,3 +46,6 @@ include = ["src*"]
 [tool.ruff]
 line-length = 100
 target-version = "py311"
+
+[tool.poetry]
+package-mode = false
