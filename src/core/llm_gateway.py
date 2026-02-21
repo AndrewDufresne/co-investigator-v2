@@ -12,10 +12,10 @@ from src.config import get_settings
 
 # Agent role → model config mapping (all default to DeepSeek)
 MODEL_ROUTING: dict[str, dict[str, str]] = {
-    "planning":         {"model": "deepseek-chat"},
+    "planning":         {"model": "deepseek-reasoner"},
     "narrative":        {"model": "deepseek-chat"},
-    "compliance_judge": {"model": "deepseek-chat"},
-    "crime_detection":  {"model": "deepseek-chat"},
+    "compliance_judge": {"model": "deepseek-reasoner"},
+    "crime_detection":  {"model": "deepseek-reasoner"},
     "typology":         {"model": "deepseek-chat"},
     "evaluation":       {"model": "deepseek-chat"},
     "default":          {"model": "deepseek-chat"},
