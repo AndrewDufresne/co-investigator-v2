@@ -152,7 +152,7 @@ def _run_stream(app, initial_state, config, *, is_resume: bool = False):
                         # Flush previous buffer
                         current_llm_node = node
                         llm_text_buffer = ""
-                        st.write(f"🤖 **{node}** — LLM streaming:")
+                        st.write(f"🚀 **{node}** — LLM streaming:")
                         llm_placeholder = st.empty()
 
                     token = chunk.content if hasattr(chunk, "content") else str(chunk)

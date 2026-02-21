@@ -33,7 +33,7 @@ def render_agent_trace(
         has_llm = entry.get("has_llm_call", False)
 
         # Build label
-        icon = "⚙️"
+        icon = "🚀" if has_llm else "⚙️"
         duration_str = f"{duration / 1000:.1f}s" if duration >= 1000 else f"{duration}ms"
         label = f"{icon} **{node}** ({duration_str})"
         if has_llm:
