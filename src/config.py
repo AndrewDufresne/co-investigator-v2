@@ -18,11 +18,11 @@ class Settings(BaseSettings):
     """Central application settings, loaded from environment / .env file."""
 
     # ── DeepSeek LLM ──
-    deepseek_api_key: str = Field(default="", description="DeepSeek API key")
-    deepseek_base_url: str = Field(
+    llm_api_key: str = Field(default="", description="DeepSeek API key")
+    llm_base_url: str = Field(
         default="https://api.deepseek.com", description="DeepSeek API base URL"
     )
-    deepseek_model: str = Field(default="deepseek-chat", description="DeepSeek model name")
+    llm_model: str = Field(default="deepseek-chat", description="DeepSeek model name")
     llm_temperature: float = Field(default=0.1, description="LLM temperature for SAR generation")
     llm_max_tokens: int = Field(default=8192, description="LLM max output tokens")
 

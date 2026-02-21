@@ -7,6 +7,8 @@
 
 > **Agentic AI framework for AML Suspicious Activity Report (SAR) narrative generation.**
 
+> 💡 **LLM Compatibility:** This project is compatible with any LLM service that follows the OpenAI API format (e.g., DeepSeek, OpenAI, Azure OpenAI, Ollama, etc.). DeepSeek is used as an example throughout the documentation.
+
 Based on the paper: *"Argus AI: The Rise of Agentic AI for Smarter, Trustworthy AML Compliance Narratives"* (arXiv:2509.08380v2).
 
 **🌐 [中文版 README](README_zh.md)**
@@ -62,7 +64,7 @@ For the full architecture design, see:
 ### Prerequisites
 
 - Python 3.11+
-- [DeepSeek API Key](https://platform.deepseek.com/)
+- An API key for any OpenAI API-compatible LLM service ([DeepSeek](https://platform.deepseek.com/) is used as an example below)
 
 ### 1. Clone and install
 
@@ -81,16 +83,16 @@ cp .env.example .env
 ```
 
 ```env
-DEEPSEEK_API_KEY=your-key-here
+LLM_API_KEY=your-key-here
 ```
 
 **Available configuration options:**
 
 | Variable | Default | Description |
 |---|---|---|
-| `DEEPSEEK_API_KEY` | — | DeepSeek API key (required) |
-| `DEEPSEEK_BASE_URL` | `https://api.deepseek.com` | DeepSeek API base URL |
-| `DEEPSEEK_MODEL` | `deepseek-chat` | Model name |
+| `LLM_API_KEY` | — | LLM API key (required; compatible with any OpenAI API-format service) |
+| `LLM_BASE_URL` | `https://api.deepseek.com` | LLM API base URL (replace with your service endpoint) |
+| `LLM_MODEL` | `deepseek-chat/deepseek-reasoner` | Model name (replace with your model name) |
 | `LLM_TEMPERATURE` | `0.1` | LLM temperature (low for SAR precision) |
 | `COMPLIANCE_SCORE_THRESHOLD` | `0.75` | Minimum compliance score to pass |
 | `MAX_ITERATIONS` | `3` | Maximum feedback iteration rounds |
@@ -173,7 +175,7 @@ pytest tests/integration/
 | Layer | Technology | Purpose |
 |---|---|---|
 | **Agent Orchestration** | LangGraph v0.2+ | Stateful graph execution, conditional routing, HITL interrupts |
-| **LLM** | DeepSeek (via LangChain) | Primary LLM for narrative generation, planning, compliance |
+| **LLM** | OpenAI API-compatible services (via LangChain; DeepSeek as example) | Primary LLM for narrative generation, planning, compliance |
 | **UI** | Streamlit | Interactive investigator interface with real-time streaming |
 | **Crime Detection** | scikit-learn (RF/GBM) | Tree-based ensemble crime type classification |
 | **Privacy** | Presidio / spaCy NER | PII detection and anonymization (MVP) |

@@ -38,8 +38,8 @@ def get_llm(role: str = "default", streaming: bool = True, **overrides: Any) -> 
 
     kwargs: dict[str, Any] = dict(
         model=route["model"],
-        base_url=settings.deepseek_base_url,
-        api_key=settings.deepseek_api_key,
+        base_url=settings.llm_base_url,
+        api_key=settings.llm_api_key,
         temperature=settings.llm_temperature,
         max_tokens=settings.llm_max_tokens,
         streaming=streaming,

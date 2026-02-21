@@ -639,7 +639,7 @@ from langchain_openai import ChatOpenAI
 deepseek_llm = ChatOpenAI(
     model="deepseek-chat",
     base_url="https://api.deepseek.com",
-    api_key=settings.DEEPSEEK_API_KEY,
+    api_key=settings.LLM_API_KEY,
     temperature=0.1,        # Low randomness for SAR generation
     max_tokens=8192,
 )

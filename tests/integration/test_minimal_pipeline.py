@@ -15,8 +15,8 @@ import pytest
 
 # Skip if no API key available
 pytestmark = pytest.mark.skipif(
-    not os.getenv("DEEPSEEK_API_KEY") and not Path(__file__).resolve().parents[2].joinpath(".env").exists(),
-    reason="DEEPSEEK_API_KEY not set — skipping integration tests",
+    not os.getenv("LLM_API_KEY") and not Path(__file__).resolve().parents[2].joinpath(".env").exists(),
+    reason="LLM_API_KEY not set — skipping integration tests",
 )
 
 SAMPLES_DIR = Path(__file__).resolve().parents[2] / "data" / "samples"

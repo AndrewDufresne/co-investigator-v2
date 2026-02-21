@@ -7,6 +7,8 @@
 
 > **基于多 Agent 协作的 AML 可疑活动报告 (SAR) 叙述自动生成框架。**
 
+> 💡 **LLM 兼容性：** 本项目兼容一切符合 OpenAI API 范式的 LLM 服务（如 DeepSeek、OpenAI、Azure OpenAI、Moonshot、通义千问、本地 Ollama 等）。文档中以 DeepSeek 为例进行说明。
+
 基于论文：*"Argus AI: The Rise of Agentic AI for Smarter, Trustworthy AML Compliance Narratives"* (arXiv:2509.08380v2)。
 
 **🌐 [English README](README.md)**
@@ -62,7 +64,7 @@
 ### 前置要求
 
 - Python 3.11+
-- [DeepSeek API Key](https://platform.deepseek.com/)
+- 任意 OpenAI API 兼容的 LLM 服务密钥（以下以 [DeepSeek](https://platform.deepseek.com/) 为例）
 
 ### 1. 克隆并安装
 
@@ -81,16 +83,16 @@ cp .env.example .env
 ```
 
 ```env
-DEEPSEEK_API_KEY=your-key-here
+LLM_API_KEY=your-key-here
 ```
 
 **可用配置项：**
 
 | 变量 | 默认值 | 说明 |
 |---|---|---|
-| `DEEPSEEK_API_KEY` | — | DeepSeek API 密钥（必填） |
-| `DEEPSEEK_BASE_URL` | `https://api.deepseek.com` | DeepSeek API 基础 URL |
-| `DEEPSEEK_MODEL` | `deepseek-chat` | 模型名称 |
+| `LLM_API_KEY` | — | LLM API 密钥（必填，兼容任意 OpenAI API 范式服务） |
+| `LLM_BASE_URL` | `https://api.deepseek.com` | LLM API 基础 URL（替换为你的服务地址即可） |
+| `LLM_MODEL` | `deepseek-chat/deepseek-reasoner` | 模型名称（替换为你的模型名称即可） |
 | `LLM_TEMPERATURE` | `0.1` | LLM 温度参数（SAR 生成需要低随机性） |
 | `COMPLIANCE_SCORE_THRESHOLD` | `0.75` | 合规验证通过的最低分数 |
 | `MAX_ITERATIONS` | `3` | 最大反馈迭代轮次 |
@@ -173,7 +175,7 @@ pytest tests/integration/
 | 层面 | 技术 | 用途 |
 |---|---|---|
 | **Agent 编排** | LangGraph v0.2+ | 有状态图执行、条件路由、人机交互断点 |
-| **LLM** | DeepSeek (通过 LangChain) | 叙述生成、规划、合规验证的主力 LLM |
+| **LLM** | OpenAI API 兼容服务 (通过 LangChain，以 DeepSeek 为例) | 叙述生成、规划、合规验证的主力 LLM |
 | **UI** | Streamlit | 调查人员交互界面，支持实时流式输出 |
 | **犯罪检测** | scikit-learn (RF/GBM) | 基于树模型的犯罪类型集成分类 |
 | **隐私** | Presidio / spaCy NER | PII 检测与匿名化 (MVP 阶段) |
