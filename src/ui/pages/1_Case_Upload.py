@@ -49,14 +49,14 @@ with tab_sample:
         selected = st.selectbox(
             "Select a sample case",
             options=sample_files,
-            format_func=lambda p: p.stem.replace("_", " ").title(),
+            format_func=lambda p: p.stem.replace("_", " ").title() + " (Sample data is fictional; do not associate it with the real world)",
         )
         if st.button("Load Sample", type="primary"):
             raw_data = json.loads(selected.read_text(encoding="utf-8"))
             reset_case_state()
             st.session_state.case_data = raw_data
             st.session_state.case_file_name = selected.name
-            st.success(f"✅ Loaded sample: {selected.name}")
+            st.success(f"✅ Loaded sample : {selected.name} (Sample data is fictional; do not associate it with the real world)")
     else:
         st.info(f"No sample files found in `{samples_dir}`. Add JSON files to that directory.")
 
