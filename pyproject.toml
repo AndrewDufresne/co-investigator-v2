@@ -1,5 +1,5 @@
 [project]
-name = "co-investigator-v2"
+name = "Argus-v2"
 version = "0.1.0"
 description = "Agentic AI framework for AML Suspicious Activity Report (SAR) narrative generation"
 requires-python = ">=3.11"

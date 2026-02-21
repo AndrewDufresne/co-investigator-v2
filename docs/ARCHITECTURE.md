@@ -1,6 +1,6 @@
-# Co-Investigator V2 — 系统架构设计文档
+# Argus V2 — 系统架构设计文档
 
-> 基于论文 *"Co-Investigator AI: The Rise of Agentic AI for Smarter, Trustworthy AML Compliance Narratives"* (arXiv:2509.08380v2) 的方法论实现。
+> 基于论文 *"Argus AI: The Rise of Agentic AI for Smarter, Trustworthy AML Compliance Narratives"* (arXiv:2509.08380v2) 的方法论实现。
 
 ---
 
@@ -280,7 +280,7 @@ st.button("提交反馈并重新生成", on_click=on_submit_feedback)
 
 ### 4.1 UI 架构概览
 
-Streamlit 作为调查人员与 Co-Investigator AI 交互的唯一界面，承担数据输入、流程控制、叙述审查、反馈提交和结果可视化的全部职责。采用 **Streamlit Multi-Page App** 模式组织页面。
+Streamlit 作为调查人员与 Argus AI 交互的唯一界面，承担数据输入、流程控制、叙述审查、反馈提交和结果可视化的全部职责。采用 **Streamlit Multi-Page App** 模式组织页面。
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
@@ -438,7 +438,7 @@ import streamlit as st
 from ui.session import init_session_state
 
 st.set_page_config(
-    page_title="Co-Investigator AI",
+    page_title="Argus AI",
     page_icon="🔍",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -446,7 +446,7 @@ st.set_page_config(
 
 init_session_state()
 
-st.title("🔍 Co-Investigator AI")
+st.title("🔍 Argus AI")
 st.markdown("**AML 合规叙述智能生成平台** — 基于多 Agent 协作的 SAR 自动化生成系统")
 
 # 主页: 系统概览 / 快速入口
@@ -848,7 +848,7 @@ deepseek_llm = ChatOpenAI(
 ## 9. 项目目录结构
 
 ```
-co-investigator-v2/
+Argus-v2/
 ├── docs/
 │   └── ARCHITECTURE.md              # 本文档
 │
@@ -952,7 +952,7 @@ co-investigator-v2/
 
 ```toml
 [project]
-name = "co-investigator-v2"
+name = "Argus-v2"
 requires-python = ">=3.11"
 
 dependencies = [

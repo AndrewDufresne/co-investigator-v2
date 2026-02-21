@@ -196,7 +196,7 @@ def _print_results(result: dict) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Co-Investigator SAR Pipeline Runner",
+        description="Argus SAR Pipeline Runner",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:

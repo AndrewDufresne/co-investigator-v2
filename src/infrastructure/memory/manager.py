@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 
 class MemoryManager:
-    """Three-tier memory system for the Co-Investigator agents.
+    """Three-tier memory system for the Argus agents.
 
     Stores:
         - regulatory: AML rules, FinCEN guidelines, compliance templates

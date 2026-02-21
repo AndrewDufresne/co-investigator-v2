@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import sys
-import uuid
 from pathlib import Path
 
 import streamlit as st
@@ -12,12 +11,26 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.ui.session import init_session_state, update_from_graph_state
+from src.ui.session import (
+    init_session_state,
+    update_from_graph_state,
+    update_run_status,
+    unmask_for_display,
+    remask_text,
+)
 from src.ui.components.narrative_editor import (
-    render_narrative_editor,
     render_compliance_result,
     render_feedback_form,
 )
+from src.ui.components.agent_trace_viewer import render_agent_trace
+
+
+def _local_unmask_text(text: str, reverse_map: dict[str, str]) -> str:
+    """Best-effort local unmask when graph instance is not available."""
+    result = text
+    for placeholder, original in reverse_map.items():
+        result = result.replace(placeholder, original)
+    return result
 
 init_session_state()
 
@@ -40,16 +53,17 @@ cot = st.session_state.get("chain_of_thought")
 if cot:
     with st.expander("🧠 Chain-of-Thought Reasoning", expanded=False):
         for i, step in enumerate(cot, 1):
-            st.write(f"{i}. {step}")
+            st.write(f"{i}. {unmask_for_display(step) if isinstance(step, str) else step}")
 
 # ── Narrative display/edit ──
 is_final = st.session_state.get("final_narrative") is not None
-narrative = st.session_state.get("final_narrative") or st.session_state.get("narrative_draft")
+_raw_narrative = st.session_state.get("final_narrative") or st.session_state.get("narrative_draft") or ""
+narrative = unmask_for_display(_raw_narrative)
 
 st.subheader("📄 SAR Narrative" + (" (Final)" if is_final else " (Draft)"))
 
 if st.session_state.get("narrative_intro"):
-    st.markdown(f"**Introduction:** {st.session_state.narrative_intro}")
+    st.markdown(f"**Introduction:** {unmask_for_display(st.session_state.narrative_intro)}")
     st.divider()
 
 edited_narrative = st.text_area(
@@ -58,6 +72,7 @@ edited_narrative = st.text_area(
     height=500,
     key="narrative_review_editor",
 )
+edited_narrative_text = edited_narrative or ""
 
 st.divider()
 
@@ -71,23 +86,51 @@ if not is_final:
     feedback_result = render_feedback_form()
 
     if feedback_result == "__APPROVE__":
-        # Approve: resume graph to unmask
-        st.session_state.final_narrative = edited_narrative
-        st.session_state.execution_status = "completed"
+        # Approve: resume graph and execute unmask node
+        st.session_state.execution_status = "running"
 
         # If graph is paused, resume it
         app = st.session_state.get("graph_app")
         if app and st.session_state.get("thread_id"):
             config = {"configurable": {"thread_id": st.session_state.thread_id}}
             try:
+                # Re-mask user edits before writing back to graph (LLM must not see real PII)
+                app.update_state(config, {"narrative_draft": remask_text(edited_narrative_text)})
+
                 for event in app.stream(None, config, stream_mode="updates"):
                     for node_name, node_output in event.items():
                         if isinstance(node_output, dict):
                             update_from_graph_state(node_output)
-            except Exception:
-                pass  # May already be at END
 
-        st.success("✅ Narrative approved and finalized!")
+                # Finalize status once unmask has produced final output
+                if st.session_state.get("final_narrative"):
+                    st.session_state.execution_status = "completed"
+                    update_run_status("approved")
+                else:
+                    st.session_state.execution_status = "review"
+
+            except Exception as e:
+                st.session_state.execution_status = "error"
+                st.error(f"Error while approving narrative: {e}")
+        else:
+            # Fallback path: local unmask if mapping exists, avoid leaving masked final text.
+            reverse_map = st.session_state.get("mask_mapping") or {}
+            if reverse_map:
+                st.session_state.final_narrative = _local_unmask_text(edited_narrative_text, reverse_map)
+                cot = st.session_state.get("chain_of_thought") or []
+                if isinstance(cot, list):
+                    st.session_state.chain_of_thought = [
+                        _local_unmask_text(step, reverse_map) if isinstance(step, str) else step
+                        for step in cot
+                    ]
+                st.session_state.execution_status = "completed"
+                update_run_status("approved")
+            else:
+                st.warning("Graph state or mask mapping not found, so unmasking cannot be performed. Please return to the SAR Generate page and run again.")
+                st.session_state.execution_status = "review"
+
+        if st.session_state.get("final_narrative"):
+            st.success("✅ Narrative approved and finalized!")
         st.rerun()
 
     elif feedback_result and feedback_result != "__APPROVE__":
@@ -98,12 +141,12 @@ if not is_final:
         if app and st.session_state.get("thread_id"):
             config = {"configurable": {"thread_id": st.session_state.thread_id}}
 
-            # Update graph state with feedback
+            # Update graph state with feedback (re-mask edits so LLM never sees real PII)
             app.update_state(
                 config,
                 {
                     "human_feedback": feedback_result,
-                    "narrative_draft": edited_narrative,
+                    "narrative_draft": remask_text(edited_narrative_text),
                 },
             )
 
@@ -152,3 +195,10 @@ else:
             file_name=f"SAR_Report_{st.session_state.get('case_id', 'unknown')}.json",
             mime="application/json",
         )
+
+# # ── Agent trace (always shown at bottom) ──
+# st.divider()
+# _history = st.session_state.get("run_history", [])
+# _trace = _history[-1].get("agents_trace", []) if _history else []
+# if _trace:
+#     render_agent_trace(_trace, title="🔎 Agent Trace (this run)", expanded_default=False)

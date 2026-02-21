@@ -1,4 +1,4 @@
-"""Co-Investigator AI — Streamlit multi-page app entry point.
+"""Argus AI — Streamlit multi-page app entry point.
 
 Run with: streamlit run src/app.py
 """
@@ -27,7 +27,7 @@ logging.basicConfig(
 
 # ── Page config ──
 st.set_page_config(
-    page_title="Co-Investigator AI",
+    page_title="Argus AI",
     page_icon="🔍",
     layout="wide",
     initial_sidebar_state="expanded",

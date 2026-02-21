@@ -109,16 +109,19 @@ def privacy_unmask_agent(state: SARState) -> dict[str, Any]:
     """
     narrative = state.get("narrative_draft", "")
     intro = state.get("narrative_intro", "")
+    chain_of_thought = state.get("chain_of_thought", [])
     reverse_map = state.get("mask_mapping", {})
 
     logger.info("Privacy Guard: unmasking narrative (%d mappings)", len(reverse_map))
 
     unmasked_narrative = _deep_unmask(narrative, reverse_map)
     unmasked_intro = _deep_unmask(intro, reverse_map)
+    unmasked_chain_of_thought = _deep_unmask(chain_of_thought, reverse_map)
 
     return {
         "final_narrative": unmasked_narrative,
         "narrative_intro": unmasked_intro,
         "narrative_draft": unmasked_narrative,
+        "chain_of_thought": unmasked_chain_of_thought,
         "status": "review",
     }

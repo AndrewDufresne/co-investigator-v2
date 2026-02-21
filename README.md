@@ -1,8 +1,8 @@
-# Co-Investigator V2
+# Argus V2
 
 > Agentic AI framework for AML Suspicious Activity Report (SAR) narrative generation.
 
-Based on the paper: *"Co-Investigator AI: The Rise of Agentic AI for Smarter, Trustworthy AML Compliance Narratives"* (arXiv:2509.08380v2).
+Based on the paper: *"Argus AI: The Rise of Agentic AI for Smarter, Trustworthy AML Compliance Narratives"* (arXiv:2509.08380v2).
 
 ## Quick Start
 

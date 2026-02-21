@@ -1,1 +1,1 @@
-# Co-Investigator V2 - src package
+# Argus V2 - src package

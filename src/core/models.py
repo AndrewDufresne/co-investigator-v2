@@ -137,3 +137,57 @@ class SAROutput(BaseModel):
     compliance_validation: ComplianceValidation | None = None
     chain_of_thought: list[str] = Field(default_factory=list)
     metadata: dict[str, Any] = Field(default_factory=dict)
+
+
+# ── Agent I/O Field Mapping ──
+# Per-node mapping of which State fields are relevant as input/output for display.
+
+AGENT_IO_FIELDS: dict[str, dict[str, list[str]]] = {
+    "ingest": {
+        "input": ["raw_data"],
+        "output": ["structured_data"],
+    },
+    "mask": {
+        "input": ["structured_data"],
+        "output": ["masked_data", "mask_mapping"],
+    },
+    "crime_detect": {
+        "input": ["masked_data"],
+        "output": ["crime_types", "risk_indicators"],
+    },
+    "plan": {
+        "input": ["crime_types", "risk_indicators"],
+        "output": ["execution_plan", "active_typology_agents"],
+    },
+    "typology": {
+        "input": ["masked_data", "active_typology_agents", "crime_types"],
+        "output": ["typology_results"],
+    },
+    "external_intel": {
+        "input": ["crime_types", "masked_data"],
+        "output": ["external_intel"],
+    },
+    "narrative": {
+        "input": ["masked_data", "typology_results", "execution_plan", "external_intel", "human_feedback"],
+        "output": ["narrative_draft", "narrative_intro", "chain_of_thought"],
+    },
+    "compliance": {
+        "input": ["narrative_draft", "typology_results"],
+        "output": ["compliance_result", "compliance_score"],
+    },
+    "feedback": {
+        "input": ["compliance_result", "narrative_draft", "human_feedback"],
+        "output": ["narrative_draft", "iteration_count"],
+    },
+    "unmask": {
+        "input": ["narrative_draft", "mask_mapping"],
+        "output": ["final_narrative", "chain_of_thought"],
+    },
+}
+
+# Nodes that call an LLM and should show streaming tokens.
+LLM_AGENT_NODES: set[str] = {"plan", "narrative", "compliance",
+                               "transaction_fraud", "payment_velocity",
+                               "country_risk", "text_content",
+                               "geo_anomaly", "account_health",
+                               "dispute_pattern"}

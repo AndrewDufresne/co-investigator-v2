@@ -22,11 +22,12 @@ MODEL_ROUTING: dict[str, dict[str, str]] = {
 }
 
 
-def get_llm(role: str = "default", **overrides: Any) -> ChatOpenAI:
+def get_llm(role: str = "default", streaming: bool = True, **overrides: Any) -> ChatOpenAI:
     """Create a ChatOpenAI instance routed to the appropriate model for the given agent role.
 
     Args:
         role: Agent role key (e.g., "narrative", "planning").
+        streaming: Whether to enable token-level streaming (default True).
         **overrides: Additional kwargs passed to ChatOpenAI.
 
     Returns:
@@ -41,6 +42,7 @@ def get_llm(role: str = "default", **overrides: Any) -> ChatOpenAI:
         api_key=settings.deepseek_api_key,
         temperature=settings.llm_temperature,
         max_tokens=settings.llm_max_tokens,
+        streaming=streaming,
     )
     kwargs.update(overrides)
     return ChatOpenAI(**kwargs)

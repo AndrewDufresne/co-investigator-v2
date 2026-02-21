@@ -1,4 +1,4 @@
-"""Co-Investigator AI — Streamlit Home page."""
+"""Argus AI — Streamlit Home page."""
 
 from __future__ import annotations
 
@@ -6,11 +6,11 @@ import streamlit as st
 
 
 def run() -> None:
-    st.title("🔍 Co-Investigator AI")
+    st.title("🔍 Argus AI")
     st.subheader("Agentic AI for Smarter, Trustworthy AML Compliance Narratives")
 
     st.markdown("""
-Welcome to **Co-Investigator AI** — an agentic multi-agent system that automates
+Welcome to **Argus AI** — an agentic multi-agent system that automates
 Suspicious Activity Report (SAR) narrative generation for AML compliance.
 
 ### 🚀 How It Works
