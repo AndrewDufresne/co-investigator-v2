@@ -5,7 +5,7 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.40%2B-red.svg)](https://streamlit.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> **基于多 Agent 协作的 AML 可疑活动报告 (SAR) 叙述自动生成框架。**
+> **基于多 Agent 协作的 AF/AML 可疑活动报告 (SAR) 叙述自动生成框架。**
 
 > 💡 **LLM 兼容性：** 本项目兼容一切符合 OpenAI API 范式的 LLM 服务（如 DeepSeek、OpenAI、Azure OpenAI、Moonshot、通义千问、本地 Ollama 等）。文档中以 DeepSeek 为例进行说明。
 

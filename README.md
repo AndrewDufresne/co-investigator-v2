@@ -5,7 +5,7 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.40%2B-red.svg)](https://streamlit.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> **Agentic AI framework for AML Suspicious Activity Report (SAR) narrative generation.**
+> **Agentic AI framework for AF/AML Suspicious Activity Report (SAR) narrative generation.**
 
 > 💡 **LLM Compatibility:** This project is compatible with any LLM service that follows the OpenAI API format (e.g., DeepSeek, OpenAI, Azure OpenAI, Ollama, etc.). DeepSeek is used as an example throughout the documentation.
 

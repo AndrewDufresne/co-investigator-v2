@@ -7,12 +7,11 @@ import streamlit as st
 
 def run() -> None:
     st.title("🔍 Argus AI")
-    st.subheader("Agentic AI for Smarter, Trustworthy AML Compliance Narratives")
+    st.subheader("Agentic AI for Smarter, Trustworthy Anti-fraud and Anti-money laundering Compliance Narratives")
 
     st.markdown("""
 Welcome to **Argus AI** — an agentic multi-agent system that automates
-Suspicious Activity Report (SAR) narrative generation for AML compliance.
-
+Suspicious Activity Report (SAR) narrative generation for anti-fraud and anti-money laundering compliance.
 ### 🚀 How It Works
 
 1. **📄 Upload Case** — Upload a JSON case file with transaction data, KYC, and alerts
