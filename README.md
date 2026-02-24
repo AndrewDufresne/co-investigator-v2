@@ -9,7 +9,7 @@
 
 > 💡 **LLM Compatibility:** This project is compatible with any LLM service that follows the OpenAI API format (e.g., DeepSeek, OpenAI, Azure OpenAI, Ollama, etc.). DeepSeek is used as an example throughout the documentation.
 
-Based on the paper: *"Argus AI: The Rise of Agentic AI for Smarter, Trustworthy AML Compliance Narratives"* (arXiv:2509.08380v2).
+Based on the paper: *"Co-Investigator AI: The Rise of Agentic AI for Smarter, Trustworthy AML Compliance Narratives"* (arXiv:2509.08380v2).
 
 **🌐 [中文版 README](README_zh.md)**
 
@@ -206,7 +206,7 @@ This project is for research and educational purposes.
 
 ## 📚 References
 
-- Paper: *"Argus AI: The Rise of Agentic AI for Smarter, Trustworthy AML Compliance Narratives"* — [arXiv:2509.08380v2](https://arxiv.org/abs/2509.08380v2)
+- Paper: *"Co-Investigator AI: The Rise of Agentic AI for Smarter, Trustworthy AML Compliance Narratives"* — [arXiv:2509.08380v2](https://arxiv.org/abs/2509.08380v2)
 - [LangGraph Documentation](https://langchain-ai.github.io/langgraph/)
 - [Streamlit Documentation](https://docs.streamlit.io/)
 - [DeepSeek API](https://platform.deepseek.com/)

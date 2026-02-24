@@ -9,7 +9,7 @@
 
 > 💡 **LLM 兼容性：** 本项目兼容一切符合 OpenAI API 范式的 LLM 服务（如 DeepSeek、OpenAI、Azure OpenAI、Moonshot、通义千问、本地 Ollama 等）。文档中以 DeepSeek 为例进行说明。
 
-基于论文：*"Argus AI: The Rise of Agentic AI for Smarter, Trustworthy AML Compliance Narratives"* (arXiv:2509.08380v2)。
+基于论文：*"Co-Investigator AI: The Rise of Agentic AI for Smarter, Trustworthy AML Compliance Narratives"* (arXiv:2509.08380v2)。
 
 **🌐 [English README](README.md)**
 
@@ -206,7 +206,7 @@ pytest tests/integration/
 
 ## 📚 参考
 
-- 论文：*"Argus AI: The Rise of Agentic AI for Smarter, Trustworthy AML Compliance Narratives"* — [arXiv:2509.08380v2](https://arxiv.org/abs/2509.08380v2)
+- 论文：*"Co-Investigator AI: The Rise of Agentic AI for Smarter, Trustworthy AML Compliance Narratives"* — [arXiv:2509.08380v2](https://arxiv.org/abs/2509.08380v2)
 - [LangGraph 文档](https://langchain-ai.github.io/langgraph/)
 - [Streamlit 文档](https://docs.streamlit.io/)
 - [DeepSeek API](https://platform.deepseek.com/)
